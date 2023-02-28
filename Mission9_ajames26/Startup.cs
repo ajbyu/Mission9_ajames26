@@ -34,7 +34,7 @@ namespace Mission9_ajames26
                 options.UseSqlite(Configuration["ConnectionStrings:BookstoreConnection"]);
             });
 
-            //Concrete types
+            //Concrete types for interfaces
             services.AddScoped<IBookRepository, BookRepository>();
         }
 

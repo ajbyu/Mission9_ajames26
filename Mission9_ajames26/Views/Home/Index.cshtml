@@ -1,8 +1,10 @@
-﻿@{
+﻿@using Mission9_ajames26.Models.ViewModels;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-@model List<Book>
+@model BooksViewModel
 
 <style>
     .container {
@@ -15,7 +17,7 @@
         background-color: #e0e0de;
         border-style: solid;
         border-color: lightgray;
-        border-radius: 5px;
+        border-radius: 1px;
         border-width: 2px;
         padding: 5px;
         margin: 5px;
@@ -23,7 +25,8 @@
     }
 
     .background:hover {
-            background-color: #919191;
+        background-color: #919191;
+        transition: all .4s ease;
     }
 </style>
 
@@ -32,7 +35,7 @@
 </div>
 
 <div class="container">
-    @foreach (Book b in Model)
+    @foreach (Book b in Model.Books)
     {
         <div class="background">
             <h5><b>@b.Title</b></h5>
@@ -46,3 +49,5 @@
         </div>
     }
 </div>
+
+<div page-num="@Model.PageInfo" page-action="Index"></div>
