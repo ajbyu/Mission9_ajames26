@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Book>
+
+<style>
+    .container {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+    }
+
+    .background {
+        background-color: #e0e0de;
+        border-style: solid;
+        border-color: lightgray;
+        border-radius: 5px;
+        border-width: 2px;
+        padding: 5px;
+        margin: 5px;
+        width: 45%;
+    }
+
+    .background:hover {
+            background-color: #919191;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Amazonian Books</h1>
+</div>
+
+<div class="container">
+    @foreach (Book b in Model)
+    {
+        <div class="background">
+            <h5><b>@b.Title</b></h5>
+            <div>Author: @b.Author</div>
+            <div>Publisher: @b.Publisher</div>
+            <div>Isbn: @b.Isbn</div>
+            <div>Classification: @b.Classification</div>
+            <div>Category: @b.Category</div>
+            <div>Page Count: @b.PageCount</div>
+            <div>Price: @b.Price</div>
+        </div>
+    }
+</div>
