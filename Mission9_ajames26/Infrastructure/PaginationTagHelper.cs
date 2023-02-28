@@ -20,6 +20,11 @@ namespace Mission9_ajames26.Infrastructure
 
         public string PageAction { get; set; }
 
+        public bool UseClasses { get; set; } = false;
+        public string PageClass { get; set; }
+        public string PageClassNormal { get; set; }
+        public string PageClassSelected { get; set; }
+
         public PaginationTagHelper(IUrlHelperFactory uhf)
         {
             _uhf = uhf;
@@ -36,8 +41,14 @@ namespace Mission9_ajames26.Infrastructure
                 TagBuilder tag = new TagBuilder("a");
 
                 tag.Attributes["href"] = helper.Action(PageAction, new { pageNum = i });
-                tag.InnerHtml.Append(i.ToString());
 
+                if (UseClasses)
+                {
+                    tag.AddCssClass(PageClass);
+                    tag.AddCssClass(i == PageNum.CurrentPage ? PageClassSelected: PageClassNormal);
+                }
+
+                tag.InnerHtml.Append(i.ToString());
                 result.InnerHtml.AppendHtml(tag);
             }
 
